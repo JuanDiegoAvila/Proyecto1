@@ -1,31 +1,60 @@
+
 public class Calculadora {
-    public String Calculo(String expresion){
 
-        int resultado = 0;
 
-        //separa el String recibido para poder utilizar las dos variables y el operador.
-        String[] op = expresion.split(",");
-        int var1 = Integer.parseInt(op[0]);
-        int var2 = Integer.parseInt(op[2]);
 
-        //en la posicion 1 se encuentre el operador por lo que se define la operacion segun su valor.
-        switch(op[1]){
-            case "+":
-                resultado = var1 + var2;
-                break;
-
-            case "-":
-                resultado = var1 - var2;
-                break;
-
-            case "*":
-                resultado = var1 * var2;
-                break;
-
-            case "/":
-                resultado = var1 / var2;
-                break;
+    private Boolean isOperator(char c){
+        //si el caracter es un digito, es un operando.
+        switch(c){
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+                return true;
         }
-        return ""+resultado;
+        return false;
     }
+
+    public double Calculo(String expresion){
+        Stack<Double> Stack = new StackVector<Double>();
+
+        int length = expresion.length();
+
+        for(int j = length -1; j >= 0; j--){
+            char c = expresion.charAt(i);
+            if(isOperand(c))
+                //es operando por lo que se hace push de la expresion
+                Stack.Push((double)(expresion.charAt(j) - 48));
+            else{
+                // Se encontro un operando
+                // Pop de los primeros dos elentos del stack
+                double o1 = Stack.Pop();
+                double o2 = Stack.Pop();
+
+                // Use switch case to operate on o1
+                // and o2 and perform o1 O o2.
+                switch (expresion.charAt(j)) {
+                    case '+':
+                        Stack.Push(o1 + o2);
+                        break;
+                    case '-':
+                        Stack.Push(o1 - o2);
+                        break;
+                    case '*':
+                        Stack.Push(o1 * o2);
+                        break;
+                    case '/':
+                        Stack.Push(o1 / o2);
+                        break;
+                }
+            }
+        }
+
+        return Stack.Peek();
+
+    }
+
+
+
+
 }

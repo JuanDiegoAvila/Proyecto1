@@ -4,18 +4,18 @@ import java.util.Scanner;
 public class Lector {
 
     public String Archivo(String path){
-        String calculo = "";
+        String LISP = "";
         try {
             Scanner input = new Scanner(new File(path));
             int cont = 0;
             while (input.hasNextLine()) {
-                calculo = input.nextLine();
+                LISP = input.nextLine();
             }
         }catch (Exception ex){
             ex.printStackTrace();
         }
 
-        return calculo;
+        return LISP;
     }
 
 }
