@@ -3,55 +3,84 @@ public class Calculadora {
 
 
 
-    private Boolean isOperator(char c){
-        //si el caracter es un digito, es un operando.
-        switch(c){
+    private boolean isOperator(char x)
+    {
+        switch (x) {
             case '+':
             case '-':
-            case '*':
             case '/':
+            case '*':
                 return true;
         }
         return false;
     }
 
-    public double Calculo(String expresion){
-        Stack<Double> Stack = new StackVector<Double>();
+    // Convert prefix to Postfix expression
+    private String preToPost(String expresion)
+    {
+
+        Stack<String> s = new StackVector<String>();
+
 
         int length = expresion.length();
 
-        for(int j = length -1; j >= 0; j--){
-            char c = expresion.charAt(i);
-            if(isOperand(c))
-                //es operando por lo que se hace push de la expresion
-                Stack.Push((double)(expresion.charAt(j) - 48));
-            else{
-                // Se encontro un operando
-                // Pop de los primeros dos elentos del stack
-                double o1 = Stack.Pop();
-                double o2 = Stack.Pop();
+        // De derecha a izquierda
+        for (int i = length - 1; i >= 0; i--)
+        {
 
-                // Use switch case to operate on o1
-                // and o2 and perform o1 O o2.
-                switch (expresion.charAt(j)) {
+            if (isOperator(expresion.charAt(i)))
+            {
+
+                String op1 = s.Pop();
+                String op2 = s.Pop();
+
+                String temp = op1 + op2 + expresion.charAt(i);
+
+                s.Push(temp);
+            }
+            // if symbol is an operand
+            else {
+                // push the operand to the stack
+                s.Push(expresion.charAt(i) + "");
+            }
+        }
+
+
+        // stack contains only the Postfix expression
+        return s.Peek();
+
+    }
+
+    public String Calculo(String datos) {
+        //Se crea Stack
+        String expresion = preToPost(datos);
+        Stack<Integer> stack = new StackVector<Integer>();
+        int x = 0, y = 0;
+        char ch[] = expresion.toCharArray();
+        //for para realizar las operaciones
+        for(char c: ch) {
+            if(c >= '0' && c <= '9') {
+                stack.Push((int)(c - '0'));
+            } else {
+                y = stack.Pop();
+                x = stack.Pop();
+                switch(c) {
                     case '+':
-                        Stack.Push(o1 + o2);
+                        stack.Push(x+y);
                         break;
                     case '-':
-                        Stack.Push(o1 - o2);
+                        stack.Push(x-y);
                         break;
                     case '*':
-                        Stack.Push(o1 * o2);
+                        stack.Push(x*y);
                         break;
                     case '/':
-                        Stack.Push(o1 / o2);
+                        stack.Push(x/y);
                         break;
                 }
             }
         }
-
-        return Stack.Peek();
-
+        return String.valueOf(stack.Pop());
     }
 
 
