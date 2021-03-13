@@ -16,7 +16,8 @@ public class Evaluador {
     public Evaluador (String funcion, Object var, Object instruccion){
         List<String> val = new ArrayList<>();
         val.add(var.toString());
-        List ins = (List) instruccion;
+        @SuppressWarnings("unchecked")
+        List<Object> ins = (List<Object>) instruccion;
         this.funcion = funcion;
         for (String item: val){
             this.var.put(item, null);
@@ -28,8 +29,8 @@ public class Evaluador {
      * @param val Lista con las variables necesarias de la funcion
      * @return Devuelve la instruccion con las variables como constantes
      */
-    public List<Object> EjecutarInstrucciones (List val){
-        List temp = this.instrucciones;
+    public List<Object> EjecutarInstrucciones (List<Object> val){
+        List<Object> temp = this.instrucciones;
         //HashMap temporal para almacenar el valor de cada variable
         HashMap<String, Object> tempVar = this.var;
         
@@ -49,19 +50,23 @@ public class Evaluador {
             if ((temp.get(i) instanceof String)){
                 //Toma cada elemento del Hashmap
                 for (String key: tempVar.keySet()) {
-                    //Si el elemento de la instruccion es igual a algun Key del mapa lo reemplaza por su Value
+                     //Si el elemento es igual a algun Key del mapa lo reemplaza por su Valor correspondiente
                     if (temp.get(i).equals(key)){
                         temp.add(i, tempVar.get(key));
                         temp.remove(i + 1);
                     }
                 }
             } else if (temp.get(i) instanceof ArrayList){
-                List subIns = (List)temp.get(i);
+                @SuppressWarnings("unchecked")
+                List<Object> subIns = (List<Object>)temp.get(i);
                 int j = 0;
                 while (j < subIns.size()){
-                    if ((subIns.get(j) instanceof String)){//Toma cada elemento de las instrucciones
-                        for (String key: tempVar.keySet()) {//Toma cada elemento del map
-                            if (subIns.get(j).equals(key)){//Si el elemento de la instruccion es igual a algun Key del mapa lo reemplaza por su Value
+                    //Toma cada elemento de las instrucciones temporales
+                    if ((subIns.get(j) instanceof String)){
+                        //Toma cada elemento del Hashmap
+                        for (String key: tempVar.keySet()) {
+                            //Si el elemento es igual a algun Key del mapa lo reemplaza por su Valor correspondiente
+                            if (subIns.get(j).equals(key)){
                                 subIns.add(j, tempVar.get(key));
                                 subIns.remove(j + 1);
                             }
