@@ -28,4 +28,6 @@ public interface Stack<T> {
      * **/
     public T Peek();
 
+    public T get(int i);
+    public void removeLast();
 }

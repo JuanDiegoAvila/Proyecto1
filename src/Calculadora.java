@@ -5,23 +5,19 @@ public class Calculadora {
 
     private boolean isOperator(char x)
     {
-        switch (x) {
-            case '+':
-            case '-':
-            case '/':
-            case '*':
-                return true;
-        }
-        return false;
+        return switch (x) {
+            case '+', '-', '/', '*' -> true;
+            default -> false;
+        };
     }
 
     // Convert prefix to Postfix expression
-    private String preToPost(String expresion)
+    public String preToPost(String expresion)
     {
-
-        Stack<String> s = new StackVector<String>();
-
-
+        expresion = expresion.replace(" ",",");
+        Stack<String> stack = new StackVector<String>();
+        
+        System.out.println("Expresion inicial: "+expresion);
         int length = expresion.length();
 
         // De derecha a izquierda
@@ -31,23 +27,26 @@ public class Calculadora {
             if (isOperator(expresion.charAt(i)))
             {
 
-                String op1 = s.Pop();
-                String op2 = s.Pop();
+                String op1 = (!stack.Pop().equals(","))?stack.Pop() : stack.get((int) stack.size()-2);
+                String op2 = (!stack.Pop().equals(","))?stack.Pop() : stack.get((int) stack.size()-2);
 
-                String temp = op1 + op2 + expresion.charAt(i);
 
-                s.Push(temp);
+                String temp = op1+op2+expresion.charAt(i);
+                stack.Push(temp);
             }
             // if symbol is an operand
             else {
                 // push the operand to the stack
-                s.Push(expresion.charAt(i) + "");
+                if(expresion.charAt(i) == ',')
+                    stack.Push(",");
+                else
+                    stack.Push(expresion.charAt(i) + "");
             }
         }
 
 
         // stack contains only the Postfix expression
-        return s.Peek();
+        return stack.toString();
 
     }
 
@@ -56,7 +55,7 @@ public class Calculadora {
         String expresion = preToPost(datos);
         Stack<Integer> stack = new StackVector<Integer>();
         int x = 0, y = 0;
-        char ch[] = expresion.toCharArray();
+        char[] ch = expresion.toCharArray();
         //for para realizar las operaciones
         for(char c: ch) {
             if(c >= '0' && c <= '9') {
@@ -64,19 +63,11 @@ public class Calculadora {
             } else {
                 y = stack.Pop();
                 x = stack.Pop();
-                switch(c) {
-                    case '+':
-                        stack.Push(x+y);
-                        break;
-                    case '-':
-                        stack.Push(x-y);
-                        break;
-                    case '*':
-                        stack.Push(x*y);
-                        break;
-                    case '/':
-                        stack.Push(x/y);
-                        break;
+                switch (c) {
+                    case '+' -> stack.Push(x + y);
+                    case '-' -> stack.Push(x - y);
+                    case '*' -> stack.Push(x * y);
+                    case '/' -> stack.Push(x / y);
                 }
             }
         }

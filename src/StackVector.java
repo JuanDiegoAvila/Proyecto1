@@ -40,5 +40,16 @@ public class StackVector<T> implements Stack<T>{
         return vector.get(vector.indexOf(vector.firstElement()));
     }
 
+    public T get(int pos){ vector.removeElementAt(pos+1) ; return vector.get(pos); }
+    public void removeLast(){ vector.removeElementAt(vector.indexOf(vector.lastElement())); }
+
+    @Override
+    public String toString(){
+        String vec = "";
+        for(int i = 0; i<size(); i++)
+            vec += this.vector.get(i)+"";
+        return vec;
+    }
+
 
 }

@@ -6,8 +6,8 @@ public class Main {
         //Creamos el lector de texto
         Lector lector = new Lector();
         String expresion = lector.Archivo("datos.txt");
-        Calculadora calc = new Calculadora();
 
-        System.out.println(calc.Calculo(expresion));
+        Controlador control = new Controlador();
+        control.Expresion(expresion);
     }
 }
