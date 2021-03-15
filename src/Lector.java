@@ -37,9 +37,13 @@ public class Lector {
         for(int i = 0; i<LispExpresion.length();i++){
             exp.add(LispExpresion.charAt(i)+"");
         }
-
+        //System.out.println("Expresion: " + LispExpresion);
         //la expresion es valida.
-        exp.remove(0);
+        if(exp.get(0).equals(" ")){
+            exp.remove(0);
+        }
+        //exp.remove(0);
+        //System.out.println("Exp: " + exp + "\n");
 
         boolean salir = false;
         boolean llave = false;
@@ -71,8 +75,9 @@ public class Lector {
             }
         }
         System.out.println(var);
+        System.out.println(var);
 
 
     }
-
 }
+
