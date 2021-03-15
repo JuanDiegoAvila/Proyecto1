@@ -28,16 +28,20 @@ public class Lector {
 
     public void Read(String LispExpresion){
 
-        LispExpresion = LispExpresion.replaceAll("\t","");
+        LispExpresion = LispExpresion.trim();
         LispExpresion = LispExpresion.replaceAll("\\s{2,}", " ");
         List<String> exp = new ArrayList<String>();
 
         for(int i = 0; i<LispExpresion.length();i++){
             exp.add(LispExpresion.charAt(i)+"");
         }
-
+        //System.out.println("Expresion: " + LispExpresion);
         //la expresion es valida.
-        exp.remove(0);
+        if(exp.get(0).equals(" ")){
+            exp.remove(0);
+        }
+        //exp.remove(0);
+        //System.out.println("Exp: " + exp + "\n");
 
         boolean salir = false;
         boolean llave = false;
@@ -65,9 +69,10 @@ public class Lector {
 
             }
         }
-        System.out.println("Key:"+var+"\nValue: ");
+
+        System.out.println(var);
 
 
     }
-
 }
+
