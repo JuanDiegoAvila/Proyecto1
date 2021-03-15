@@ -9,6 +9,10 @@ public class Lector {
     HashMap<String,String> var = new HashMap<String,String>();
 
 
+    public String[] tokenizar(String linea){
+        return linea.split("[\\s,]*(~@|[\\[\\]{}()'`~^@]|\"(?:\\\\.|[^\\\\\"])*\"?|;.*|[^\\s\\[\\]{}('\"`,;)]*)");
+    }
+
     public String LISP(String path){
         String resultado = "";
         try {
@@ -24,11 +28,9 @@ public class Lector {
         return resultado;
     }
 
-    // eliminar multiples espacios
-
     public void Read(String LispExpresion){
 
-        LispExpresion = LispExpresion.replaceAll("\t","");
+        LispExpresion = LispExpresion.trim();
         LispExpresion = LispExpresion.replaceAll("\\s{2,}", " ");
         List<String> exp = new ArrayList<String>();
 
@@ -58,14 +60,17 @@ public class Lector {
                     expresion += LispExpresion.charAt(c)+"";
 
 
-                if ((c == LispExpresion.length() - 1)){
+                if ((c == LispExpresion.length()-1)){
+
+                    //String pal = String.join("",tokenizar(palabra));
+                    //String ex = String.join("",tokenizar(expresion));
                     var.put(palabra,expresion);
                     salir = true;
                 }
 
             }
         }
-        System.out.println("Key:"+var+"\nValue: ");
+        System.out.println(var);
 
 
     }
