@@ -10,6 +10,7 @@ public class Main {
 
         
             while (salir) {
+
                 try {
                 System.out.println("------------LISP------------");
                 System.out.println("1. Ejecutar comando Lisp");
@@ -33,7 +34,7 @@ public class Main {
                 }
                 catch (Exception e) {
                     System.out.println("Solo se pueden ingresar numeros\n");
-                    break;
+                    sc.next();
                 }
         }
     }
