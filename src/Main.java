@@ -19,10 +19,13 @@ public class Main {
                 op = sc.nextInt();
 
                 if (op == 1) {
-                        System.out.print("Ingrese la direccion del archivo a evaluar: \n");
-                        String path = sc.nextLine();
+                        String path = "";
+                        System.out.println("Ingrese la direccion del archivo a evaluar: ");
+                        path = sc.next();
+    
                         Lector lector = new Lector();
                         String expresion = lector.LISP(path);
+                        
 
                     } else if (op == 2) {
                         salir = false;
