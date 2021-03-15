@@ -5,9 +5,8 @@ public class Main {
 
         //Creamos el lector de texto
         Lector lector = new Lector();
-        String expresion = lector.Archivo("datos.txt");
+        String expresion = lector.LISP("datos.txt");
 
-        Controlador control = new Controlador();
-        control.Expresion(expresion);
+
     }
 }

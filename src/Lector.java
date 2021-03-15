@@ -1,24 +1,73 @@
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class Lector {
 
-    public String Archivo(String path){
-        String LISP = "";
+    HashMap<String,String> var = new HashMap<String,String>();
+
+
+    public String LISP(String path){
+        String resultado = "";
         try {
             Scanner input = new Scanner(new File(path));
             int cont = 0;
             while (input.hasNextLine()) {
-                String nuevo = input.nextLine();
-                nuevo = nuevo.trim();
-                nuevo = nuevo.replaceAll("\\s{2,}", " ");
-                LISP += nuevo;
+                Read(input.nextLine());
             }
         }catch (Exception ex){
             ex.printStackTrace();
         }
 
-        return LISP;
+        return resultado;
+    }
+
+    // eliminar multiples espacios
+
+    public void Read(String LispExpresion){
+
+        LispExpresion = LispExpresion.replaceAll("\t","");
+        LispExpresion = LispExpresion.replaceAll("\\s{2,}", " ");
+        List<String> exp = new ArrayList<String>();
+
+        for(int i = 0; i<LispExpresion.length();i++){
+            exp.add(LispExpresion.charAt(i)+"");
+        }
+
+        //la expresion es valida.
+        exp.remove(0);
+
+        boolean salir = false;
+        boolean llave = false;
+
+        String expresion = "";
+        String palabra = "";
+
+
+        while(!salir) {
+            for (int c = 0; c < LispExpresion.length(); c++) {
+                if(!llave){
+                    if (LispExpresion.charAt(c) != ' ')
+                        palabra += LispExpresion.charAt(c) + "";
+                    else
+                        llave = true;
+
+                }else
+                    expresion += LispExpresion.charAt(c)+"";
+
+
+                if ((c == LispExpresion.length() - 1)){
+                    var.put(palabra,expresion);
+                    salir = true;
+                }
+
+            }
+        }
+        System.out.println("Key:"+var+"\nValue: ");
+
+
     }
 
 }
