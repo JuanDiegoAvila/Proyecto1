@@ -1,8 +1,5 @@
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Lector {
 
@@ -22,7 +19,7 @@ public class Lector {
                 Read(input.nextLine());
             }
         }catch (Exception ex){
-            ex.printStackTrace();
+
         }
 
         return resultado;
@@ -65,16 +62,12 @@ public class Lector {
 
 
                 if ((c == LispExpresion.length()-1)){
-
-                    //String pal = String.join("",tokenizar(palabra));
-                    //String ex = String.join("",tokenizar(expresion));
                     var.put(palabra,expresion);
                     salir = true;
                 }
 
             }
         }
-        System.out.println(var);
         System.out.println(var);
 
 
