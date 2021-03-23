@@ -18,7 +18,7 @@ public class Lector {
             while (input.hasNextLine()) {
                 Read(input.nextLine());
             }
-        }catch (Exception ex){
+        }catch (Exception ignored){
 
         }
 
@@ -36,15 +36,11 @@ public class Lector {
         }
         //System.out.println("Expresion: " + LispExpresion);
         //la expresion es valida.
-        if(exp.get(0).equals(" ")){
-            exp.remove(0);
-        }
-        //exp.remove(0);
-        //System.out.println("Exp: " + exp + "\n");
+
+        System.out.println("Exp: " + exp + "\n");
 
         boolean salir = false;
         boolean llave = false;
-
         String expresion = "";
         String palabra = "";
 
@@ -69,7 +65,6 @@ public class Lector {
             }
         }
         System.out.println(var);
-
 
     }
 }
