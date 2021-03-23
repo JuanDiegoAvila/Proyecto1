@@ -22,7 +22,7 @@ public class Main {
                         String path = "";
                         System.out.println("Ingrese la direccion del archivo a evaluar: ");
                         path = sc.next();
-    
+     
                         Lector lector = new Lector();
                         String expresion = lector.LISP(path);
                         
