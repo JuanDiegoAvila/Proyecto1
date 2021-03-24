@@ -12,7 +12,7 @@ public class Evaluador<E> {
  * @param instrucciones Lista con las instrucciones de la funcion del método
  */
 
-public void quote(List<E> instrucciones){
+	public void quote(List<E> instrucciones){
     	String texto="";
     	for(int i=1;i<instrucciones.size();i++) {
     		
@@ -50,6 +50,14 @@ public void quote(List<E> instrucciones){
     	}
     	
     }
+
+    public void cond(List<E> instrucciones){
+
+	}
+
+	public void defun(List<E> instrucciones){
+    	
+	}
 }
 
 

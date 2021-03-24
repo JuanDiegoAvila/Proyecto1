@@ -12,27 +12,28 @@ public class Main {
             while (salir) {
 
                 try {
-                System.out.println("------------LISP------------");
-                System.out.println("1. Ejecutar comando Lisp");
-                System.out.println("2. Salir");
-                System.out.print("Seleccione la opcion a realizar -> ");
-                op = sc.nextInt();
+                    System.out.println("------------LISP------------");
+                    System.out.println("1. Ejecutar comando Lisp");
+                    System.out.println("2. Salir");
+                    System.out.print("Seleccione la opcion a realizar -> ");
+                    op = sc.nextInt();
+                    sc.nextLine();
 
-                if (op == 1) {
+                    if (op == 1) {
                         String path = "";
-                        System.out.println("Ingrese la direccion del archivo a evaluar: ");
-                        path = sc.next();
-     
+                        System.out.print("Ingrese la direccion del archivo a evaluar: ");
+                        path = sc.nextLine();
+
                         Lector lector = new Lector();
                         String expresion = lector.LISP(path);
-                        
+                        System.out.println(expresion);
 
                     } else if (op == 2) {
                         salir = false;
                         System.exit(0);
                     } else {
                         System.out.println("Ingrese un numero dentro del rango especificado\n");
-                       
+
                     }
                 }
                 catch (Exception e) {
