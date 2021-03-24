@@ -15,6 +15,25 @@ public class Evaluador<E> {
     public boolean equals(E obj1, E obj2){
         return obj1.equals(obj2);
     }
+	
+	/**
+	 * 
+	 * @param obj1 primer objeto a comparar 
+	 * @param obj2 segundo objeto a comparar
+	 * @return el valor que sea mayor entre los dos objetos
+	 */
+	 public boolean Mayor(E obj1, E obj2){
+        return (Double.parseDouble(obj1.toString()) > Double.parseDouble(obj2.toString()));
+    }
+	/**
+	 * 
+	 * @param obj1 primer objeto a comparar
+	 * @param obj2 segundo objeto a comparar
+	 * @return el valor del objeto que sea menor entre los dos
+	 */
+    public boolean Menor(E obj1, E obj2){
+        return (Double.parseDouble(obj1.toString()) < Double.parseDouble(obj2.toString()));
+    }
 /**
  * MetodoPara evaluar Quote dentro de Lisp
  * @param instrucciones Lista con las instrucciones de la funcion del método

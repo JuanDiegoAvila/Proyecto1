@@ -2,6 +2,7 @@ import java.util.List;
 
 public class EvalFuncion<E> {
     List<E> list;
+
     public void fEvaluar(List<E> instruccion){
         
         if (instruccion.contains("-") || instruccion.contains("/") || instruccion.contains("*") || instruccion.contains("+")){
@@ -9,6 +10,7 @@ public class EvalFuncion<E> {
             Calculadora cal = new Calculadora();
             //Realizar lo de Calculadora
             //break;
+
         } else if (instruccion.contains("list")){
             	
             list = new Evaluador<E>().list(instruccion.subList(1, instruccion.size()));
@@ -17,11 +19,29 @@ public class EvalFuncion<E> {
         } else if (instruccion.contains("equal")){
             
             if( (new Evaluador<E>()).equals(instruccion.get(1), instruccion.get(2))){
-                System.out.print("Resultado: Verdadero, " + instruccion.get(1) + " es igual que " + instruccion.get(2));
+                System.out.print("Resultado: , " + instruccion.get(1) + " es igual que " + instruccion.get(2));
             }
             else{
-                System.out.print("Resultado: Falso, " + instruccion.get(1) + " No es igual que " + instruccion.get(2));
+                System.out.print("Resultado: , " + instruccion.get(1) + " No es igual que " + instruccion.get(2));
             }
+        }
+            else if (instruccion.contains(">")){
+            	
+                if( (new Evaluador<E>()).Mayor(instruccion.get(1), instruccion.get(2))){
+                    System.out.print("Resultado: , " + instruccion.get(1) + " es mayor que " + instruccion.get(2));
+                }
+                else{
+                    System.out.print("Resultado: " + instruccion.get(1) + " No es mayor que " + instruccion.get(2));
+                }
+                
+            } else if (instruccion.contains("<")){
+            	
+                if( (new Evaluador<E>()).Menor(instruccion.get(1), instruccion.get(2))){
+                    System.out.print("Resultado: " + instruccion.get(1) + " es menor que " + instruccion.get(2));
+                }
+                else{
+                    System.out.print("Resultado: " + instruccion.get(1) + " No es menor que " + instruccion.get(2));
+                }
         }
         else if(instruccion.contains("quote")) {
             new Evaluador<E>().quote(instruccion);
@@ -30,3 +50,4 @@ public class EvalFuncion<E> {
         }
 }
 }
+
