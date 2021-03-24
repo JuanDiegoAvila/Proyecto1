@@ -1,17 +1,24 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Map;
 
 public class Evaluador<E> {
     public String funcion = "";
     private HashMap<String, Object> var = new HashMap<>();
     private List<E> instrucciones;
+
+	public List<E> list(List<E> valores){
+        return valores;
+    }
+
+    public boolean equals(E obj1, E obj2){
+        return obj1.equals(obj2);
+    }
 /**
  * MetodoPara evaluar Quote dentro de Lisp
  * @param instrucciones Lista con las instrucciones de la funcion del método
  */
-
 	public void quote(List<E> instrucciones){
     	String texto="";
     	for(int i=1;i<instrucciones.size();i++) {
@@ -24,7 +31,6 @@ public class Evaluador<E> {
      * Metodo para poder evaluar la funcion de setq dentro de LISP
      * @param instrucciones Lista con las instrucciones de la funcion del método
      */
-
     public void setq(List<E> instrucciones) {
     	Map<String, String> map = new HashMap<String, String>();
     	//Si son varios datos
