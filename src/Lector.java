@@ -21,49 +21,56 @@ public class Lector {
     }
 
     public String Read(String LispExpresion){
-
-        Evaluador evaluar = new Evaluador();
-
         LispExpresion = LispExpresion.replaceAll("\\s{2,}", " ");
-        System.out.println(LispExpresion);
 
+        List<String> expresionTemp = new ArrayList<String>();
         ArrayList<String> operandos = new ArrayList<String>();
         ArrayList<String> operacion = new ArrayList<String>();
-        ArrayList<String> parAbre = new ArrayList<String>();
-        ArrayList<String> parCierra = new ArrayList<String>();
 
+        int parentesis = 0;
 
         String[] sep = LispExpresion.split("");
-
-
         List<String> charac = Arrays.asList(sep);
-        System.out.println(charac.toString());
 
-        System.out.println(operandos.toString());
-        System.out.println(parCierra.toString());
-        System.out.println(parAbre.toString());
-
+        StringBuilder temporal = new StringBuilder();
         try{
             for(String temp: charac){
-                if(temp.equals("(")){
-                    parAbre.add(temp);
-                }else if(temp.equals(")")){
-                    ;parCierra.add(temp);
-                }else{
-                    operandos.add(temp);
+                //agregar todo lo anterior.
+                switch (temp) {
+                    case "(" -> {
+                        expresionTemp.add(temporal.toString());
+                        temporal = new StringBuilder();
+                        parentesis++;
+                    }
+                    case ")" -> {
+                        expresionTemp.add(temporal.toString());
+                        temporal = new StringBuilder();
+                        parentesis--;}
+                    case " " -> {
+                        expresionTemp.add(temporal.toString());
+                        temporal = new StringBuilder();
+                    }
+                    default -> temporal.append(temp);
                 }
             }
-
-            System.out.println(operandos.toString());
-            System.out.println(parCierra.toString());
-            System.out.println(parAbre.toString());
         }catch(Exception ignored){
 
         }
 
-        if(parCierra.size() != parAbre.size()){
+        List<String> expresion = new ArrayList<>();
+        for (String s : expresionTemp) {
+            if (s.equals("") || s.equals(" ")) {
+                //No colocar si es espacio.
+            }else{
+                expresion.add(s);
+            }
+        }
+
+        if(parentesis != 0){
             return "Hace falta un parentesis para completar la expresion.";
         }else{
+            EvalFuncion<String> evaluar = new EvalFuncion<String>();
+            evaluar.fEvaluar(expresion);
             return null;
         }
 

@@ -43,10 +43,16 @@ public class EvalFuncion<E> {
                     System.out.print("Resultado: " + instruccion.get(1) + " No es menor que " + instruccion.get(2));
                 }
         }
-        else if(instruccion.contains("quote")) {
+        else if(instruccion.contains("quote") || instruccion.contains("'")) {
             new Evaluador<E>().quote(instruccion);
         }else if(instruccion.contains("setq")) {
             new Evaluador<E>().setq(instruccion);
+        }else if(instruccion.contains("defun")) {
+            //enviar el nombre, las variables y las instrucciones.
+        }else if(instruccion.contains("ATOM") || instruccion.contains("atom")){
+            String atom = new Evaluador<E>().atom(instruccion) ? "True": "False";
+            System.out.println(atom);
+
         }
 }
 }

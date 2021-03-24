@@ -35,7 +35,7 @@ public class Evaluador<E> {
         return (Double.parseDouble(obj1.toString()) < Double.parseDouble(obj2.toString()));
     }
 /**
- * MetodoPara evaluar Quote dentro de Lisp
+ * Metodo para evaluar Quote dentro de Lisp
  * @param instrucciones Lista con las instrucciones de la funcion del método
  */
 	public void quote(List<E> instrucciones){
@@ -76,13 +76,54 @@ public class Evaluador<E> {
     	
     }
 
+    public boolean atom(List<E> instrucciones){
+
+		String texto= "";
+		for(int i=1;i<instrucciones.size();i++) {
+
+			texto += instrucciones.get(i)+" ";
+		}
+
+		try{
+			Double.parseDouble(texto);
+			return true;
+		}catch(NumberFormatException e){
+
+			try{
+				Integer.parseInt(texto);
+				return true;
+			}catch(NumberFormatException i){
+
+				try{
+					Float.parseFloat(texto);
+					return true;
+				}catch(NumberFormatException x){
+
+					try{
+						texto.toString();
+						return true;
+					}catch(Exception y){
+						return false;
+					}
+				}
+			}
+		}
+	}
+
     public void cond(List<E> instrucciones){
 
 	}
 
-	public void defun(List<E> instrucciones){
-    	
+	public void defun(String name, List<E> Vars, List<E> instrucciones){
+    	List<String> variables = new ArrayList<>();
+    	variables.add(Vars.toString());
+
+    	for(String i: variables){
+    		var.put(i,null);
+		}
+		this.instrucciones = instrucciones;
 	}
+
 }
 
 

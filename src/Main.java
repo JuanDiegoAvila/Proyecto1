@@ -26,7 +26,6 @@ public class Main {
 
                         Lector lector = new Lector();
                         String expresion = lector.LISP(path);
-                        System.out.println(expresion);
 
                     } else if (op == 2) {
                         salir = false;
