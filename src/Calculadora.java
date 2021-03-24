@@ -16,8 +16,7 @@ public class Calculadora {
     {
         expresion = expresion.replace(" ",",");
         Stack<String> stack = new StackVector<String>();
-        
-        System.out.println("Expresion inicial: "+expresion);
+
         int length = expresion.length();
 
         // De derecha a izquierda
