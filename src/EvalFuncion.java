@@ -1,10 +1,13 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+
 public class EvalFuncion<E> {
-    List<E> list;
 
     public void fEvaluar(List<E> instruccion){
-        
+        List<E> list;
+            
         if (instruccion.contains("-") || instruccion.contains("/") || instruccion.contains("*") || instruccion.contains("+")){
             	
             Calculadora cal = new Calculadora();
@@ -42,6 +45,8 @@ public class EvalFuncion<E> {
                 else{
                     System.out.print("Resultado: " + instruccion.get(1) + " No es menor que " + instruccion.get(2));
                 }
+        }else if (instruccion.contains("cond")){
+            new Evaluador<E>().cond(instruccion);
         }
         else if(instruccion.contains("quote") || instruccion.contains("'")) {
             new Evaluador<E>().quote(instruccion);
@@ -54,6 +59,10 @@ public class EvalFuncion<E> {
             System.out.println(atom);
 
         }
+    }
 }
-}
+
+
+    
+
 

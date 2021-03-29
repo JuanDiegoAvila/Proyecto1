@@ -110,9 +110,32 @@ public class Evaluador<E> {
 		}
 	}
 
-    public void cond(List<E> instrucciones){
+    public E cond(List<E> instrucciones){
+			List<E> subList = instrucciones.subList(1, instrucciones.size());
+			List<E> subList2 = (List<E>) subList.get(0);
+			int i = 0;
+			for (Object inst: subList2) {
+				List<E> instruccion = (List<E>)inst;
+				if (instruccion.contains("equal")){
+					if (equals(instruccion.get(1), instruccion.get(2))){
+						return instruccion.get(3);
+					}
+				} else if (instruccion.contains("<")){
+					if (Menor(instruccion.get(1), instruccion.get(2))){
+						return instruccion.get(3);
+					}
+				} else if (instruccion.contains(">")){
+					if (Mayor(instruccion.get(1), instruccion.get(2))){
+						return instruccion.get(3);
+					}
+				} else if (i == subList2.size()){
+					return subList2.get(i);
+				}
+				i++;
+			}
+			return null;
+		}
 
-	}
 
 	public void defun(String name, List<E> Vars, List<E> instrucciones){
     	List<String> variables = new ArrayList<>();
