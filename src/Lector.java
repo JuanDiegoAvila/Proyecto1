@@ -39,10 +39,7 @@ public class Lector {
                     case "(" -> {
                         if(temporal.contains(" ")){
                             ArrayList<String> separar = new ArrayList<String>(Arrays.asList(temporal.split(" ")));
-                            for (String s : separar) {
-                                lista.add(s);
-                                System.out.println(s);
-                            }
+                            lista.addAll(separar);
                         }else{
                             lista.add(temporal);
                         }
@@ -116,10 +113,8 @@ public class Lector {
         if(parentesis != 0){
             return "Hace falta un parentesis para completar la expresion.";
         }else{
-            //EvalFuncion<Object> evaluar = new EvalFuncion<Object>();
-            //evaluar.fEvaluar(expresion);
-
-            System.out.println(expresion.toString());
+            EvalFuncion<Object> evaluar = new EvalFuncion<Object>();
+            evaluar.fEvaluar(expresion);
             return null;
         }
 
