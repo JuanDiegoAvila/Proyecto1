@@ -62,15 +62,15 @@ public class Evaluador<E> {
     			contenido+=var[i];
     		}
     		map.put(instrucciones.get(1).toString(), contenido);
-    		System.out.println("La variable es: "+instrucciones.get(1).toString());
-    		System.out.println("valor "+"["+map.get(instrucciones.get(1).toString()));
+    		System.out.println("Variable"+instrucciones.get(1).toString());
+    		System.out.println("valor " +map.get(instrucciones.get(1).toString()));
     		
     	//Si solo es un dato
     	}else {
     		
     		map.put(instrucciones.get(1).toString(), instrucciones.get(2).toString());
     		
-    		System.out.println("La variable es: "+instrucciones.get(1).toString());
+    		System.out.println("Variable "+instrucciones.get(1).toString());
     		System.out.println("valor "+map.get(instrucciones.get(1).toString()));
     	}
     	
