@@ -24,16 +24,16 @@ public class EvalFuncion<E> {
                 } else if (instruccion.contains("equal")){
 
                     if( (new Evaluador<E>()).equals(instruccion.get(1), instruccion.get(2))){
-                        System.out.print("Resultado: , " + instruccion.get(1) + " es igual que " + instruccion.get(2));
+                        System.out.print("Resultado: " + instruccion.get(1) + " es igual que " + instruccion.get(2));
                     }
                     else{
-                        System.out.print("Resultado: , " + instruccion.get(1) + " No es igual que " + instruccion.get(2));
+                        System.out.print("Resultado: " + instruccion.get(1) + " No es igual que " + instruccion.get(2));
                     }
                 }
                 else if (instruccion.contains(">")){
 
                     if( (new Evaluador<E>()).Mayor(instruccion.get(1), instruccion.get(2))){
-                        System.out.print("Resultado: , " + instruccion.get(1) + " es mayor que " + instruccion.get(2));
+                        System.out.print("Resultado: " + instruccion.get(1) + " es mayor que " + instruccion.get(2));
                     }
                     else{
                         System.out.print("Resultado: " + instruccion.get(1) + " No es mayor que " + instruccion.get(2));
