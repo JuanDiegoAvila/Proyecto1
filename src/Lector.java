@@ -37,7 +37,15 @@ public class Lector {
                 //agregar todo lo anterior.
                 switch (temp){
                     case "(" -> {
-                        lista.add(temporal.toString());
+                        if(temporal.contains(" ")){
+                            ArrayList<String> separar = new ArrayList<String>(Arrays.asList(temporal.split(" ")));
+                            for (String s : separar) {
+                                lista.add(s);
+                                System.out.println(s);
+                            }
+                        }else{
+                            lista.add(temporal);
+                        }
                         temporal = "";
                         parentesis++;
                     }
@@ -85,7 +93,6 @@ public class Lector {
         List<String> charac = Arrays.asList(sep);
 
         ArrayList<Object> expresion = createList(charac);
-
         for(Object z : expresion){
             if(z instanceof List){
                 String contenido = (String) ((List<?>) z).get(0);
