@@ -5,7 +5,7 @@ import java.util.List;
 
 public class EvalFuncion<E> {
 
-    public void fEvaluar(List<E> instruccion){
+    public void fEvaluar(ArrayList<E> instruccion){
         List<E> list;
             
         if (instruccion.contains("-") || instruccion.contains("/") || instruccion.contains("*") || instruccion.contains("+")){

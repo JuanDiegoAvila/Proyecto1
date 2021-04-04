@@ -4,6 +4,7 @@ import java.util.*;
 public class Lector {
 
     HashMap<String,String> var = new HashMap<String,String>();
+    int parentesis;
 
     public String LISP(String path){
         String resultado = "";
@@ -16,61 +17,102 @@ public class Lector {
         }catch (Exception ignored){
 
         }
-        ;
+
+        resultado = resultado.replaceAll("\\(","\\ ( ");
+        resultado = resultado.replaceAll("\\)","\\ ) ");
+
         return Read(resultado);
     }
 
-    public String Read(String LispExpresion){
-        LispExpresion = LispExpresion.replaceAll("\\s{2,}", " ");
-
-        List<String> expresionTemp = new ArrayList<String>();
-        ArrayList<String> operandos = new ArrayList<String>();
-        ArrayList<String> operacion = new ArrayList<String>();
+    public ArrayList<Object> createList(List<String> charac){
 
         int parentesis = 0;
+        ArrayList<Object> expresionTemp = new ArrayList<Object>();
+        ArrayList<Object> lista = new ArrayList<Object>();
 
-        String[] sep = LispExpresion.split("");
-        List<String> charac = Arrays.asList(sep);
-
-        StringBuilder temporal = new StringBuilder();
+        String temporal = "";
         try{
+
             for(String temp: charac){
                 //agregar todo lo anterior.
-                switch (temp) {
+                switch (temp){
                     case "(" -> {
-                        expresionTemp.add(temporal.toString());
-                        temporal = new StringBuilder();
+                        lista.add(temporal.toString());
+                        temporal = "";
                         parentesis++;
                     }
-                    case ")" -> {
-                        expresionTemp.add(temporal.toString());
-                        temporal = new StringBuilder();
-                        parentesis--;}
-                    case " " -> {
-                        expresionTemp.add(temporal.toString());
-                        temporal = new StringBuilder();
+                    case ")" ->{
+                        expresionTemp = createList(Arrays.asList(temporal.split("")));
+                        if(!expresionTemp.isEmpty()){
+                            lista.add(expresionTemp);
+                            parentesis--;
+                            temporal = "";
+                        }
+
                     }
-                    default -> temporal.append(temp);
+                    default -> temporal += temp;
                 }
+
+
+
+            }
+            if(!temporal.equals("")){
+                lista.add(temporal);
             }
         }catch(Exception ignored){
 
         }
 
-        List<String> expresion = new ArrayList<>();
-        for (String s : expresionTemp) {
+        ArrayList<Object> expresion = new ArrayList<>();
+        for (Object s : lista) {
             if (s.equals("") || s.equals(" ")) {
-                //No colocar si es espacio.
+
             }else{
                 expresion.add(s);
+            }
+        }
+
+
+
+        return expresion;
+    }
+
+    public String Read(String LispExpresion){
+        LispExpresion = LispExpresion.replaceAll("\\s{2,}", " ");
+
+
+        String[] sep = LispExpresion.split("");
+        List<String> charac = Arrays.asList(sep);
+
+        ArrayList<Object> expresion = createList(charac);
+
+        for(Object z : expresion){
+            if(z instanceof List){
+                String contenido = (String) ((List<?>) z).get(0);
+                List<String> cont = new ArrayList<String>(Arrays.asList(contenido.split(" ")));
+
+                if(!cont.isEmpty()){
+                    cont.remove(0);
+                }
+
+                for(int i = 0; i<cont.size(); i++){
+
+                    if (i == 0) {
+                        ((List<Object>) z).set(i, (Object) cont.get(i));
+                    } else {
+                        ((List<Object>) z).add((Object) cont.get(i));
+                    }
+                }
             }
         }
 
         if(parentesis != 0){
             return "Hace falta un parentesis para completar la expresion.";
         }else{
-            EvalFuncion<String> evaluar = new EvalFuncion<String>();
-            evaluar.fEvaluar(expresion);
+            //EvalFuncion<Object> evaluar = new EvalFuncion<Object>();
+            //evaluar.fEvaluar(expresion);
+
+            System.out.println(expresion.toString());
             return null;
         }
 

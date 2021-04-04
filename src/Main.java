@@ -36,7 +36,8 @@ public class Main {
                     }
                 }
                 catch (Exception e) {
-                    System.out.println("Solo se pueden ingresar numeros\n");
+                    //System.out.println("Solo se pueden ingresar numeros\n");
+                    System.out.println(e.getMessage());
                     sc.next();
                 }
         }
