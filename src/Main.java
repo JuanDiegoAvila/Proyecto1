@@ -1,5 +1,7 @@
 
 import java.util.Scanner;
+import java.util.*;
+import java.util.ArrayList;
 /**
  * @author Esteban Aldana Guerra 20591
  * @author Juan Diego Avila Sagastume
@@ -7,10 +9,14 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
-
+        
         int op = 0;
         boolean salir = true;
         Scanner sc = new Scanner(System.in);
+        
+        Lector lector = new Lector();
+        Evaluador eval = new Evaluador();
+        EvalFuncion<Object> evaluar = new EvalFuncion<Object>();
 
         
             while (salir) {
@@ -18,7 +24,8 @@ public class Main {
                 try {
                     System.out.println("------------LISP------------");
                     System.out.println("1. Ejecutar comando Lisp");
-                    System.out.println("2. Salir");
+                    System.out.println("2. Ingresar Funcion");
+                    System.out.println("3. Salir");
                     System.out.print("Seleccione la opcion a realizar -> ");
             
                     op = sc.nextInt();
@@ -29,12 +36,40 @@ public class Main {
                         System.out.print("Ingrese la direccion del archivo a evaluar: ");
                         path = sc.nextLine();
 
-                        Lector lector = new Lector();
-                        String expresion = lector.LISP(path);
+                        ArrayList<Object> expresion = lector.LISP(path);
+                        evaluar.fEvaluar(expresion);
 
                     } else if (op == 2) {
+                        System.out.println("Ingrese su funcion");
+                        String userFunction = sc.nextLine(); //La funcion se debe ingresar sin parentesis
+
+                        ArrayList<Object> functionExpresion = lector.Read(userFunction);
+                        String temporal = functionExpresion.get(0).toString();
+                        String[] sep = temporal.split(" ");
+                        List<String> userFunctionList = Arrays.asList(sep);
+
+                        if(userFunctionList.contains("square")){
+                            ArrayList temp = evaluar.getValue(userFunctionList.get(0));
+                            ArrayList one = (ArrayList) temp.get(0);
+                            ArrayList two = (ArrayList) one.get(0);
+                            String param = userFunctionList.get(1);
+
+                           for(int i = 0; i<two.size(); i++){
+                               if(two.get(i).equals("x")){
+                                   two.set(i, param);
+                               }
+                           }
+
+                           evaluar.fEvaluar(two);
+                        }
+
+                    } else if(op == 3){
                         salir = false;
                         System.exit(0);
+
+
+
+
                     } else {
                         System.out.println("Ingrese un numero dentro del rango especificado\n");
 
