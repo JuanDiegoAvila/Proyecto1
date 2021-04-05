@@ -93,6 +93,12 @@ public class EvalFuncion<E> {
         }
 
     }
+
+    public ArrayList getValue(Object function){
+        ArrayList<ArrayList> tempList = new ArrayList<ArrayList>();
+        tempList.add(newfunct.get(function));
+        return tempList;
+    }
 }
 
 
