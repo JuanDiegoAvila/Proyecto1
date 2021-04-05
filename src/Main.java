@@ -5,20 +5,20 @@ import java.util.ArrayList;
 /**
  * @author Esteban Aldana Guerra 20591
  * @author Juan Diego Avila Sagastume
- * @author Jun Woo Lee Hong 
+ * @author Jun Woo Lee Hong
  */
 public class Main {
     public static void main(String[] args) {
-        
+
         int op = 0;
         boolean salir = true;
         Scanner sc = new Scanner(System.in);
-        
+
         Lector lector = new Lector();
         Evaluador eval = new Evaluador();
         EvalFuncion<Object> evaluar = new EvalFuncion<Object>();
 
-        
+
             while (salir) {
 
                 try {
@@ -27,7 +27,7 @@ public class Main {
                     System.out.println("2. Ingresar Funcion");
                     System.out.println("3. Salir");
                     System.out.print("Seleccione la opcion a realizar -> ");
-            
+
                     op = sc.nextInt();
                     sc.nextLine();
 
@@ -48,19 +48,47 @@ public class Main {
                         String[] sep = temporal.split(" ");
                         List<String> userFunctionList = Arrays.asList(sep);
 
-                        if(userFunctionList.contains("square")){
-                            ArrayList temp = evaluar.getValue(userFunctionList.get(0));
-                            ArrayList one = (ArrayList) temp.get(0);
-                            ArrayList two = (ArrayList) one.get(0);
-                            String param = userFunctionList.get(1);
+                        HashMap tempHashMap = evaluar.getMap();
 
-                           for(int i = 0; i<two.size(); i++){
-                               if(two.get(i).equals("x")){
-                                   two.set(i, param);
-                               }
-                           }
 
-                           evaluar.fEvaluar(two);
+                        if(tempHashMap.containsKey(userFunctionList.get(0))){
+
+
+                            ArrayList values = evaluar.getValue(userFunctionList.get(0));
+                            //ArrayList one = (ArrayList) temp.get(0);
+                            //ArrayList two = (ArrayList) one.get(0);
+                            String tempString = values.get(0).toString();
+
+
+
+                            Object param = userFunctionList.get(1);
+
+
+                            for(int i = 0; i<values.size(); i++){
+                                Object a = values.get(i);
+                                if(a instanceof ArrayList){
+                                    for(int k = 0; k< ((ArrayList<?>) a).size(); k++){
+                                        if(((ArrayList<?>) a).get(k).equals("x")){
+                                            ((ArrayList<Object>) a).set(k, param);
+
+                                            values.set(i,a);
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+
+                            System.out.println(values);
+                            evaluar.fEvaluar(values);
+
+
+
+
+
+
                         }
 
                     } else if(op == 3){

@@ -1,0 +1,6 @@
+(defun fibonacci(x)
+  (cond ((<= x 2) 1)
+        ((= x 0) 0)
+        (t  (+ (fibonacci (- x 1)) (fibonacci (- x 2))))
+ )
+)

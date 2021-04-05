@@ -9,7 +9,7 @@ import java.util.*;
  * @author Jun Woo Lee Hong 
  */
 public class EvalFuncion<E> {
-    
+
     HashMap<Object, ArrayList> newfunct = new HashMap<>();
     ArrayList<Object> inst = new ArrayList<Object>();
 
@@ -28,6 +28,7 @@ public class EvalFuncion<E> {
 
     public void fEvaluar(ArrayList<E> ins){
         List<E> list;
+
         for(Object i : ins){
             if(i instanceof List){
                 ArrayList<E> instruccion = (ArrayList<E>) i;
@@ -71,22 +72,25 @@ public class EvalFuncion<E> {
                     new Evaluador<E>().quote(instruccion);
                 }else if(instruccion.contains("setq")) {
                     new Evaluador<E>().setq(instruccion);
-                    
+
                 }else if(ins.contains("defun")) {
                     for(int j = 3; j < ins.size(); j++){
+                        //System.out.println(j);
                         inst.add(ins.get(j));
+                        //System.out.println(inst);
                     }
-                    int index = inst.size() -1;
-                    inst.remove(index);
+
                     newfunct.put(ins.get(1), inst);
-                    
+
                     System.out.println("Se ha grabado la funcion: " + ins.get(1));
                     break;
-                    
+
                 }else if(instruccion.contains("ATOM") || instruccion.contains("atom")){
                     String atom = new Evaluador<E>().atom(instruccion) ? "True": "False";
                     System.out.println(atom);
 
+                }else{
+                    System.out.println("else");
                 }
             }
 
@@ -95,13 +99,11 @@ public class EvalFuncion<E> {
     }
 
     public ArrayList getValue(Object function){
-        ArrayList<ArrayList> tempList = new ArrayList<ArrayList>();
-        tempList.add(newfunct.get(function));
+        ArrayList<ArrayList> tempList = newfunct.get(function);
         return tempList;
     }
+
+    public HashMap getMap(){
+        return newfunct;
+    }
 }
-
-
-    
-
-
