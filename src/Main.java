@@ -22,7 +22,7 @@ public class Main {
             while (salir) {
 
                 try {
-                    System.out.println("------------LISP------------");
+                    System.out.println("\n------------LISP------------");
                     System.out.println("1. Ejecutar comando Lisp");
                     System.out.println("2. Ingresar Funcion");
                     System.out.println("3. Salir");
