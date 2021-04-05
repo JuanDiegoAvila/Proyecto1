@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +13,7 @@ public class Evaluador<E> {
 	List<E> instrucciones;
 	
 	/**
-	 * 
+	 * Metodo para evaluar cuando se detecta una lista
 	 * @param valores lista en la cual se van a almacenar los valores que desee el usuario
 	 * @return la lista ya con los valores agregados
 	 */
@@ -21,7 +21,7 @@ public class Evaluador<E> {
         return valores;
     }
 	/**
-	 * 
+	 * metodo para ver si los dos valores son iguales o no
 	 * @param obj1 primer objeto a comparar
 	 * @param obj2 segundo objeto a comparar
 	 * @return si los dos valores son iguales o no
@@ -31,7 +31,7 @@ public class Evaluador<E> {
     }
 	
 	/**
-	 * 
+	 * Metodo para ver si un valor es mayor que el otro
 	 * @param obj1 primer objeto a comparar 
 	 * @param obj2 segundo objeto a comparar
 	 * @return el valor que sea mayor entre los dos objetos
@@ -40,7 +40,7 @@ public class Evaluador<E> {
         return (Double.parseDouble(obj1.toString()) > Double.parseDouble(obj2.toString()));
     }
 	/**
-	 * 
+	 * Metodo para ver si un valor es menor que el otro
 	 * @param obj1 primer objeto a comparar
 	 * @param obj2 segundo objeto a comparar
 	 * @return el valor del objeto que sea menor entre los dos
@@ -128,7 +128,7 @@ public class Evaluador<E> {
 		}
 	}
 	/**
-	 * 
+	 * Metodo de cond
 	 * @param instrucciones utiliza el parametro de las instrucciones extraidas del archivo seleccionado
 	 * @return regresa las condiciones que contiene el archivo
 	 */

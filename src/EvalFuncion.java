@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -28,48 +27,76 @@ public class EvalFuncion<E> {
 
     public void fEvaluar(ArrayList<E> ins){
         List<E> list;
-
+        /**
+         * Se recorre la instruccion para ser evaluada
+         */
         for(Object i : ins){
             if(i instanceof List){
                 ArrayList<E> instruccion = (ArrayList<E>) i;
+                /**
+                 * si encuentra signos manda a calcular la expresion
+                 */
                 if (instruccion.contains("-") || instruccion.contains("/") || instruccion.contains("*") || instruccion.contains("+")){
                     System.out.println("Resultado = "+ Calcular(ins));
+                    /**
+                     * si encuentra la palabra list, crea una lista con los valores proporcionados
+                     */
                 } else if (instruccion.contains("list")){
 
                     list = new Evaluador<E>().list(instruccion.subList(1, instruccion.size()));
                     System.out.println("Lista Creada: " +list);
-
+                    /**
+                     * si encuentra equal, compara los valores para ver si son iguales o no
+                     */
                 } else if (instruccion.contains("equal")){
-
+                    //es igual
                     if( (new Evaluador<E>()).equals(instruccion.get(1), instruccion.get(2))){
                         System.out.print("Resultado: " + instruccion.get(1) + " es igual que " + instruccion.get(2));
                     }
+                    //no es igual
                     else{
                         System.out.print("Resultado: " + instruccion.get(1) + " No es igual que " + instruccion.get(2));
                     }
                 }
+                /**
+                 * si encutra el signo mayor que, compara para ver si es mayor un valor al otro
+                 */
                 else if (instruccion.contains(">")){
-
+                    //Si es mayor
                     if( (new Evaluador<E>()).Mayor(instruccion.get(1), instruccion.get(2))){
                         System.out.print("Resultado: " + instruccion.get(1) + " es mayor que " + instruccion.get(2));
                     }
+                    //No es mayor
                     else{
                         System.out.print("Resultado: " + instruccion.get(1) + " No es mayor que " + instruccion.get(2));
                     }
 
+                    /**
+                     * Si encuentra el signo menor que, Compara para ver si es menor o no
+                     */
                 } else if (instruccion.contains("<")){
-
+                    //Si es menor
                     if( (new Evaluador<E>()).Menor(instruccion.get(1), instruccion.get(2))){
                         System.out.print("Resultado: " + instruccion.get(1) + " es menor que " + instruccion.get(2));
                     }
+                    //no es menor
                     else{
                         System.out.print("Resultado: " + instruccion.get(1) + " No es menor que " + instruccion.get(2));
                     }
+                    /**
+                     * si encuentra cond, manda a ejecutar la funcion del evaluador 
+                     */
                 }else if (instruccion.contains("cond")){
                     new Evaluador<E>().cond(instruccion);
                 }
+                /**
+                 * si encuentra quote regresa la expresion que le acompaña
+                 */
                 else if(instruccion.contains("quote") || instruccion.contains("'")) {
                     new Evaluador<E>().quote(instruccion);
+                    /**
+                     * Si encuentra setq regresa la variable y el valor de la eexpresion 
+                     */
                 }else if(instruccion.contains("setq")) {
                     new Evaluador<E>().setq(instruccion);
 
