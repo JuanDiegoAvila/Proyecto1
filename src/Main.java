@@ -9,18 +9,19 @@ import java.util.ArrayList;
  */
 public class Main {
     public static void main(String[] args) {
-        
+        //opcion que selecciona el usuadio
         int op = 0;
+        //boolean que identifica si selecciona salir o no
         boolean salir = true;
         Scanner sc = new Scanner(System.in);
-        
+
+        //Se llama a la clase Lector
         Lector lector = new Lector();
-        Evaluador eval = new Evaluador();
         EvalFuncion<Object> evaluar = new EvalFuncion<Object>();
 
         
             while (salir) {
-
+                //try para ver si el usuario ingresa un dato incorrecto
                 try {
                     System.out.println("\n------------LISP------------");
                     System.out.println("1. Ejecutar comando Lisp");
