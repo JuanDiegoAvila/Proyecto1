@@ -158,22 +158,6 @@ public class Evaluador<E> {
 			return null;
 		}
 
-    /**
-	 * Metodo defun 
-	 * @param name
-	 * @param Vars
-	 * @param instrucciones
-	 */
-	public void defun(String name, List<E> Vars, List<E> instrucciones){
-    	List<String> variables = new ArrayList<>();
-    	variables.add(Vars.toString());
-
-    	for(String i: variables){
-    		var.put(i,null);
-		}
-		this.instrucciones = instrucciones;
-	}
-
 }
 
 
