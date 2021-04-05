@@ -5,17 +5,26 @@ import java.util.List;
 
 public class EvalFuncion<E> {
 
+    public String Calcular(ArrayList<E> datos){
+        Calculadora calc = new Calculadora();
+        StringBuilder exp = new StringBuilder();
+        for (Object temporal : datos) {
+            if (temporal instanceof List) {
+                exp.append(Calcular((ArrayList<E>) temporal));
+            } else {
+                exp.append((String) temporal);
+            }
+        }
+        return calc.Calculo(exp);
+    }
+
     public void fEvaluar(ArrayList<E> ins){
         List<E> list;
         for(Object i : ins){
             if(i instanceof List){
                 ArrayList<E> instruccion = (ArrayList<E>) i;
                 if (instruccion.contains("-") || instruccion.contains("/") || instruccion.contains("*") || instruccion.contains("+")){
-
-                    Calculadora cal = new Calculadora();
-                    //Realizar lo de Calculadora
-                    //break;
-
+                    System.out.println("Resultado = "+ Calcular(ins));
                 } else if (instruccion.contains("list")){
 
                     list = new Evaluador<E>().list(instruccion.subList(1, instruccion.size()));

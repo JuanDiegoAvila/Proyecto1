@@ -14,7 +14,7 @@ public class Calculadora {
     // Convert prefix to Postfix expression
     public String preToPost(String expresion)
     {
-        expresion = expresion.replace(" ",",");
+
         Stack<String> stack = new StackVector<String>();
 
         int length = expresion.length();
@@ -26,9 +26,8 @@ public class Calculadora {
             if (isOperator(expresion.charAt(i)))
             {
 
-                String op1 = (!stack.Pop().equals(","))?stack.Pop() : stack.get((int) stack.size()-2);
-                String op2 = (!stack.Pop().equals(","))?stack.Pop() : stack.get((int) stack.size()-2);
-
+                String op1 = stack.Pop();
+                String op2 = stack.Pop();
 
                 String temp = op1+op2+expresion.charAt(i);
                 stack.Push(temp);
@@ -42,16 +41,14 @@ public class Calculadora {
                     stack.Push(expresion.charAt(i) + "");
             }
         }
-
-
         // stack contains only the Postfix expression
         return stack.toString();
 
     }
 
-    public String Calculo(String datos) {
+    public String Calculo(StringBuilder datos) {
         //Se crea Stack
-        String expresion = preToPost(datos);
+        String expresion = preToPost(datos.toString());
         Stack<Integer> stack = new StackVector<Integer>();
         int x = 0, y = 0;
         char[] ch = expresion.toCharArray();
