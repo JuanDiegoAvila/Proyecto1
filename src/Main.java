@@ -43,36 +43,31 @@ public class Main {
                         System.out.println("Ingrese su funcion");
                         String userFunction = sc.nextLine(); //La funcion se debe ingresar sin parentesis
 
+                        //Toma lo que el usuario ingreso y lo convierte en un ArrayList
                         ArrayList<Object> functionExpresion = lector.Read(userFunction);
                         String temporal = functionExpresion.get(0).toString();
                         String[] sep = temporal.split(" ");
                         List<String> userFunctionList = Arrays.asList(sep);
 
+
                         HashMap tempHashMap = evaluar.getMap();
+                        if(tempHashMap.containsKey(userFunctionList.get(0))){ //If para ver si lo que el usuario ingreso esta en el hashmap
 
-
-                        if(tempHashMap.containsKey(userFunctionList.get(0))){
-
-
+                            //Separa el nombre de la funcion y el parametro que el usuario encontro
                             ArrayList values = evaluar.getValue(userFunctionList.get(0));
-                            //ArrayList one = (ArrayList) temp.get(0);
-                            //ArrayList two = (ArrayList) one.get(0);
-                            String tempString = values.get(0).toString();
-
-
-
                             Object param = userFunctionList.get(1);
 
 
-                            for(int i = 0; i<values.size(); i++){
-                                Object a = values.get(i);
+                            for(int i = 0; i<values.size(); i++){ //for loop que repite por cuantas instrucciones hay
+                                Object a = values.get(i); //Pone cada instruccion en el valor por cada vez q se repite
                                 if(a instanceof ArrayList){
+                                    //if la instruccion en este paso es un ArrayList
                                     for(int k = 0; k< ((ArrayList<?>) a).size(); k++){
+                                        //for loop para revisar cada indice de la instrucciones si son un arraylist
                                         if(((ArrayList<?>) a).get(k).equals("x")){
+                                            //reemplaza todas las x por lo que el usuario ingreso
                                             ((ArrayList<Object>) a).set(k, param);
-
                                             values.set(i,a);
-
                                         }
 
                                     }

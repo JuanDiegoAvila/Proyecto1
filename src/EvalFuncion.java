@@ -101,13 +101,14 @@ public class EvalFuncion<E> {
                     new Evaluador<E>().setq(instruccion);
 
                 }else if(ins.contains("defun")) {
+                    /**
+                     * Corre un loop de la cantidad de arrays de instruccion que tiene el defun.
+                     */
                     for(int j = 3; j < ins.size(); j++){
-                        //System.out.println(j);
-                        inst.add(ins.get(j));
-                        //System.out.println(inst);
+                        inst.add(ins.get(j)); //Agrega los arrays de instrucciones a un neuvo array
                     }
 
-                    newfunct.put(ins.get(1), inst);
+                    newfunct.put(ins.get(1), inst); //Agrega a un hashmap, el key siendo el nombre de la funcion y value el array nuevo con las instrucciones
 
                     System.out.println("Se ha grabado la funcion: " + ins.get(1));
                     break;
@@ -125,12 +126,19 @@ public class EvalFuncion<E> {
 
     }
 
+
     public ArrayList getValue(Object function){
+        /**
+         * Getter que regresa el value del key aportado del hashmap
+         */
         ArrayList<ArrayList> tempList = newfunct.get(function);
         return tempList;
     }
 
     public HashMap getMap(){
+        /**
+         * getter que regresa el hashmap
+         */
         return newfunct;
     }
 }
