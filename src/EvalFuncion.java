@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * @author Esteban Aldana Guerra 20591
@@ -7,6 +9,9 @@ import java.util.List;
  * @author Jun Woo Lee Hong 
  */
 public class EvalFuncion<E> {
+    
+    HashMap<Object, ArrayList> newfunct = new HashMap<>();
+    ArrayList<Object> inst = new ArrayList<Object>();
 
     public String Calcular(ArrayList<E> datos){
         Calculadora calc = new Calculadora();
@@ -66,8 +71,18 @@ public class EvalFuncion<E> {
                     new Evaluador<E>().quote(instruccion);
                 }else if(instruccion.contains("setq")) {
                     new Evaluador<E>().setq(instruccion);
-                }else if(instruccion.contains("defun")) {
-                    //enviar el nombre, las variables y las instrucciones.
+                    
+                }else if(ins.contains("defun")) {
+                    for(int j = 3; j < ins.size(); j++){
+                        inst.add(ins.get(j));
+                    }
+                    int index = inst.size() -1;
+                    inst.remove(index);
+                    newfunct.put(ins.get(1), inst);
+                    
+                    System.out.println("Se ha grabado la funcion: " + ins.get(1));
+                    break;
+                    
                 }else if(instruccion.contains("ATOM") || instruccion.contains("atom")){
                     String atom = new Evaluador<E>().atom(instruccion) ? "True": "False";
                     System.out.println(atom);
