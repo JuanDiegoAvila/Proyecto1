@@ -10,7 +10,7 @@ public class Lector {
     HashMap<String,String> var = new HashMap<String,String>();
     int parentesis;
 
-    public String LISP(String path){
+    public ArrayList<Object> LISP(String path){
         String resultado = "";
         try {
             Scanner input = new Scanner(new File(path));
@@ -86,7 +86,7 @@ public class Lector {
         return expresion;
     }
 
-    public String Read(String LispExpresion){
+    public ArrayList<Object> Read(String LispExpresion){
         LispExpresion = LispExpresion.replaceAll("\\s{2,}", " ");
 
 
@@ -115,11 +115,10 @@ public class Lector {
         }
 
         if(parentesis != 0){
-            return "Hace falta un parentesis para completar la expresion.";
-        }else{
-            EvalFuncion<Object> evaluar = new EvalFuncion<Object>();
-            evaluar.fEvaluar(expresion);
+            System.out.println("Hace falta un parentesis para completar la expresion.");
             return null;
+        }else{
+            return expresion;
         }
 
     }
