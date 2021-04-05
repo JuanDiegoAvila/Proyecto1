@@ -1,6 +1,10 @@
 
-
 import java.util.Scanner;
+/**
+ * @author Esteban Aldana Guerra 20591
+ * @author Juan Diego Avila Sagastume
+ * @author Jun Woo Lee Hong 
+ */
 public class Main {
     public static void main(String[] args) {
 

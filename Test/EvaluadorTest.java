@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * @author Esteban Aldana Guerra 20591
+ * @author Juan Diego Avila Sagastume
+ * @author Jun Woo Lee Hong 
  */
 class EvaluadorTest {
     List<String> test = new ArrayList();

@@ -2,16 +2,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/**
+ * @author Esteban Aldana Guerra 20591
+ * @author Juan Diego Avila Sagastume
+ * @author Jun Woo Lee Hong 
+ */
 public class Evaluador<E> {
     public String funcion = "";
     private HashMap<String, Object> var = new HashMap<>();
-    private List<E> instrucciones;
-
+	List<E> instrucciones;
+	
+	/**
+	 * 
+	 * @param valores lista en la cual se van a almacenar los valores que desee el usuario
+	 * @return la lista ya con los valores agregados
+	 */
 	public List<E> list(List<E> valores){
         return valores;
     }
-
+	/**
+	 * 
+	 * @param obj1 primer objeto a comparar
+	 * @param obj2 segundo objeto a comparar
+	 * @return si los dos valores son iguales o no
+	 */
     public boolean equals(E obj1, E obj2){
         return obj1.equals(obj2);
     }
@@ -75,7 +89,11 @@ public class Evaluador<E> {
     	}
     	
     }
-
+	/**
+	 * Metodo Atom 
+	 * @param instrucciones usa la lista de instrucciones que son leidas del archivo
+	 * @return true o false dependiendo de su contenido
+	 */
     public boolean atom(List<E> instrucciones){
 
 		String texto= "";
@@ -109,7 +127,11 @@ public class Evaluador<E> {
 			}
 		}
 	}
-
+	/**
+	 * 
+	 * @param instrucciones utiliza el parametro de las instrucciones extraidas del archivo seleccionado
+	 * @return regresa las condiciones que contiene el archivo
+	 */
     public E cond(List<E> instrucciones){
 			List<E> subList = instrucciones.subList(1, instrucciones.size());
 			List<E> subList2 = (List<E>) subList.get(0);
@@ -136,7 +158,12 @@ public class Evaluador<E> {
 			return null;
 		}
 
-
+    /**
+	 * Metodo defun 
+	 * @param name
+	 * @param Vars
+	 * @param instrucciones
+	 */
 	public void defun(String name, List<E> Vars, List<E> instrucciones){
     	List<String> variables = new ArrayList<>();
     	variables.add(Vars.toString());

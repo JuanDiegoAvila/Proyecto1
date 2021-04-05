@@ -1,8 +1,11 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * @author Esteban Aldana Guerra 20591
+ * @author Juan Diego Avila Sagastume
+ * @author Jun Woo Lee Hong 
+ */
 public class EvalFuncion<E> {
 
     public String Calcular(ArrayList<E> datos){

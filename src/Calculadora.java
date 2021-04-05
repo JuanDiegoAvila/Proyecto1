@@ -1,7 +1,9 @@
-
+/**
+ * @author Esteban Aldana Guerra 20591
+ * @author Juan Diego Avila Sagastume
+ * @author Jun Woo Lee Hong 
+ */
 public class Calculadora {
-
-
 
     private boolean isOperator(char x)
     {

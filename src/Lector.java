@@ -1,6 +1,10 @@
 import java.io.File;
 import java.util.*;
-
+/**
+ * @author Esteban Aldana Guerra 20591
+ * @author Juan Diego Avila Sagastume
+ * @author Jun Woo Lee Hong 
+ */
 public class Lector {
 
     HashMap<String,String> var = new HashMap<String,String>();

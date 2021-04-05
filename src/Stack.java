@@ -1,5 +1,8 @@
 /**
  * clase generica que contiene todas las operaciones necesarias para manejar luego el StackVector.
+ * @author Esteban Aldana Guerra 20591
+ * @author Juan Diego Avila Sagastume
+ * @author Jun Woo Lee Hong 
  * **/
 public interface Stack<T> {
 

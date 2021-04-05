@@ -1,6 +1,9 @@
 import java.util.*;
 
 /**
+ * @author Esteban Aldana Guerra 20591
+ * @author Juan Diego Avila Sagastume
+ * @author Jun Woo Lee Hong 
  * StackVector<T>, clase generica que implementa la clase Stack<T> y que utiliza las operaciones del tipo vector para almacenar los datos.
  * **/
 public class StackVector<T> implements Stack<T>{
