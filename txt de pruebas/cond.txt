@@ -1,1 +1,1 @@
-(cond ((> 7 5) (setq x 5)))
+( cond ( ( > 7 5 ) ( setq x 5 ) ) )
