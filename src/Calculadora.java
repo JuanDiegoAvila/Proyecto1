@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author Esteban Aldana Guerra 20591
  * @author Juan Diego Avila Sagastume
@@ -5,10 +8,10 @@
  */
 public class Calculadora {
 
-    private boolean isOperator(char x)
+    private boolean isOperator(String x)
     {
         return switch (x) {
-            case '+', '-', '/', '*' -> true;
+            case "+", "-", "/", "*" -> true;
             default -> false;
         };
     }
@@ -18,29 +21,25 @@ public class Calculadora {
     {
 
         Stack<String> stack = new StackVector<String>();
-
-        int length = expresion.length();
+        List<String> lista = Arrays.asList(expresion.split(","));
 
         // De derecha a izquierda
-        for (int i = length - 1; i >= 0; i--)
+        for (int i = lista.size() - 1; i >= 0; i--)
         {
 
-            if (isOperator(expresion.charAt(i)))
+            if (isOperator(lista.get(i)))
             {
 
                 String op1 = stack.Pop();
                 String op2 = stack.Pop();
 
-                String temp = op1+op2+expresion.charAt(i);
+                String temp = op1+" "+op2+" "+lista.get(i);
                 stack.Push(temp);
             }
             // if symbol is an operand
             else {
                 // push the operand to the stack
-                if(expresion.charAt(i) == ',')
-                    stack.Push(",");
-                else
-                    stack.Push(expresion.charAt(i) + "");
+                stack.Push(lista.get(i) + " ");
             }
         }
         // stack contains only the Postfix expression
@@ -51,21 +50,22 @@ public class Calculadora {
     public String Calculo(StringBuilder datos) {
         //Se crea Stack
         String expresion = preToPost(datos.toString());
-        Stack<Integer> stack = new StackVector<Integer>();
-        int x = 0, y = 0;
-        char[] ch = expresion.toCharArray();
+        Stack<Double> stack = new StackVector<Double>();
+        List<String> lista = Arrays.asList(expresion.split("  "));
+        Double x = 0.0, y = 0.0;
         //for para realizar las operaciones
-        for(char c: ch) {
-            if(c >= '0' && c <= '9') {
-                stack.Push((int)(c - '0'));
-            } else {
+        for(String c: lista) {
+            try{
+                Double numero = Double.parseDouble(c);
+                stack.Push(numero);
+            }catch(Exception e){
                 y = stack.Pop();
                 x = stack.Pop();
                 switch (c) {
-                    case '+' -> stack.Push(x + y);
-                    case '-' -> stack.Push(x - y);
-                    case '*' -> stack.Push(x * y);
-                    case '/' -> stack.Push(x / y);
+                    case "+" -> stack.Push(x + y);
+                    case "-" -> stack.Push(x - y);
+                    case "*" -> stack.Push(x * y);
+                    case "/" -> stack.Push(x / y);
                 }
             }
         }

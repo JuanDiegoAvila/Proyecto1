@@ -23,7 +23,7 @@ public class EvalFuncion<E> {
 
                 exp.append(Calcular((ArrayList<E>) temporal));
             } else {
-                exp.append((String) temporal);
+                exp.append((String) temporal+",");
             }
         }
         return calc.Calculo(exp);
