@@ -41,6 +41,7 @@ public class Main {
 
                     } else if (op == 2) {
                         System.out.println("Ingrese su funcion");
+                        System.out.println("La funcion debe ser ingresada de esta manera : ( nombre x )");
                         String userFunction = sc.nextLine(); //La funcion se debe ingresar sin parentesis
 
                         //Toma lo que el usuario ingreso y lo convierte en un ArrayList
