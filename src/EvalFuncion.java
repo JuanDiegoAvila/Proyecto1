@@ -61,7 +61,9 @@ public class EvalFuncion<E> {
                     }
                     //no es igual
                     else{
-                        System.out.print("false");
+                        System.out.print("false\n");
+                        System.out.println("Es falso por lo que no se ejecuta");
+                        break;
                     }
                 }
                 /**
@@ -74,7 +76,9 @@ public class EvalFuncion<E> {
                     }
                     //No es mayor
                     else{
-                        System.out.print("false");
+                        System.out.print("false\n");
+                        System.out.println("Es falso por lo que no se ejecuta");
+                        break;
                     }
 
                     /**
@@ -87,7 +91,9 @@ public class EvalFuncion<E> {
                     }
                     //no es menor
                     else{
-                        System.out.print("false");
+                        System.out.print("false\n");
+                        System.out.println("Es falso por lo que no se ejecuta");
+                        break;
                     }
                     /**
                      * si encuentra cond, manda a ejecutar la funcion del evaluador 
