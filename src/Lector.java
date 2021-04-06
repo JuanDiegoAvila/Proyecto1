@@ -36,8 +36,8 @@ public class Lector {
 
         String temporal = "";
         try{
-
             for(String temp: charac){
+
                 //agregar todo lo anterior.
                 switch (temp){
                     case "(" -> {

@@ -45,19 +45,18 @@ public class Main {
 
                         //Toma lo que el usuario ingreso y lo convierte en un ArrayList
                         ArrayList<Object> functionExpresion = lector.Read(userFunction);
-                        String temporal = functionExpresion.get(0).toString();
-                        String[] sep = temporal.split(" ");
-                        List<String> userFunctionList = Arrays.asList(sep);
+                        ArrayList<Object> temporal = (ArrayList<Object>) functionExpresion.get(0);
 
 
                         HashMap tempHashMap = evaluar.getMap();
-                        if(tempHashMap.containsKey(userFunctionList.get(0))){ //If para ver si lo que el usuario ingreso esta en el hashmap
+                        if(tempHashMap.containsKey(temporal.get(0))){ //If para ver si lo que el usuario ingreso esta en el hashmap
 
                             //Separa el nombre de la funcion y el parametro que el usuario encontro
-                            ArrayList values = evaluar.getValue(userFunctionList.get(0));
+                            ArrayList values = evaluar.getValue(temporal.get(0));
 
 
-                            Object param = userFunctionList.get(1);
+                            Object param = temporal.get(1);
+
 
 
                             for(int i = 0; i<values.size(); i++){ //for loop que repite por cuantas instrucciones hay
@@ -74,6 +73,7 @@ public class Main {
                                     }
                                 }
                             }
+
                             evaluar.fEvaluar(values);
 
                         }
