@@ -51,11 +51,11 @@ public class EvalFuncion<E> {
                 } else if (instruccion.contains("equal")){
                     //es igual
                     if( (new Evaluador<E>()).equals(instruccion.get(1), instruccion.get(2))){
-                        System.out.print("Resultado: " + instruccion.get(1) + " es igual que " + instruccion.get(2));
+                        System.out.println("true");
                     }
                     //no es igual
                     else{
-                        System.out.print("Resultado: " + instruccion.get(1) + " No es igual que " + instruccion.get(2));
+                        System.out.print("false");
                     }
                 }
                 /**
@@ -64,11 +64,11 @@ public class EvalFuncion<E> {
                 else if (instruccion.contains(">")){
                     //Si es mayor
                     if( (new Evaluador<E>()).Mayor(instruccion.get(1), instruccion.get(2))){
-                        System.out.print("Resultado: " + instruccion.get(1) + " es mayor que " + instruccion.get(2));
+                        System.out.print("true");
                     }
                     //No es mayor
                     else{
-                        System.out.print("Resultado: " + instruccion.get(1) + " No es mayor que " + instruccion.get(2));
+                        System.out.print("false");
                     }
 
                     /**
@@ -77,11 +77,11 @@ public class EvalFuncion<E> {
                 } else if (instruccion.contains("<")){
                     //Si es menor
                     if( (new Evaluador<E>()).Menor(instruccion.get(1), instruccion.get(2))){
-                        System.out.print("Resultado: " + instruccion.get(1) + " es menor que " + instruccion.get(2));
+                        System.out.print("true");
                     }
                     //no es menor
                     else{
-                        System.out.print("Resultado: " + instruccion.get(1) + " No es menor que " + instruccion.get(2));
+                        System.out.print("false");
                     }
                     /**
                      * si encuentra cond, manda a ejecutar la funcion del evaluador 
