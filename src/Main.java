@@ -55,6 +55,8 @@ public class Main {
 
                             //Separa el nombre de la funcion y el parametro que el usuario encontro
                             ArrayList values = evaluar.getValue(userFunctionList.get(0));
+
+
                             Object param = userFunctionList.get(1);
 
 
@@ -69,20 +71,10 @@ public class Main {
                                             ((ArrayList<Object>) a).set(k, param);
                                             values.set(i,a);
                                         }
-
                                     }
-
                                 }
-
                             }
-
-                            System.out.println(values);
                             evaluar.fEvaluar(values);
-
-
-
-
-
 
                         }
 

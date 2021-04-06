@@ -9,14 +9,18 @@ import java.util.*;
  */
 public class EvalFuncion<E> {
 
+
+
     HashMap<Object, ArrayList> newfunct = new HashMap<>();
     ArrayList<Object> inst = new ArrayList<Object>();
 
     public String Calcular(ArrayList<E> datos){
+        //System.out.println(datos);
         Calculadora calc = new Calculadora();
         StringBuilder exp = new StringBuilder();
         for (Object temporal : datos) {
             if (temporal instanceof List) {
+
                 exp.append(Calcular((ArrayList<E>) temporal));
             } else {
                 exp.append((String) temporal);
@@ -31,12 +35,14 @@ public class EvalFuncion<E> {
          * Se recorre la instruccion para ser evaluada
          */
         for(Object i : ins){
+
             if(i instanceof List){
                 ArrayList<E> instruccion = (ArrayList<E>) i;
                 /**
                  * si encuentra signos manda a calcular la expresion
                  */
                 if (instruccion.contains("-") || instruccion.contains("/") || instruccion.contains("*") || instruccion.contains("+")){
+
                     System.out.println("Resultado = "+ Calcular(ins));
                     /**
                      * si encuentra la palabra list, crea una lista con los valores proporcionados
@@ -117,8 +123,6 @@ public class EvalFuncion<E> {
                     String atom = new Evaluador<E>().atom(instruccion) ? "True": "False";
                     System.out.println(atom);
 
-                }else{
-                    System.out.println("else");
                 }
             }
 

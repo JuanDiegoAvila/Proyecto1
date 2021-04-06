@@ -79,9 +79,16 @@ public class Lector {
             }else{
                 expresion.add(s);
             }
+
+
         }
 
 
+        expresion.removeAll(Collections.singleton(" "));
+        expresion.removeAll(Collections.singleton("  "));
+        expresion.removeAll(Collections.singleton("   "));
+        expresion.removeAll(Collections.singleton("    "));
+        expresion.removeAll(Collections.singleton("     "));
 
         return expresion;
     }
@@ -114,6 +121,7 @@ public class Lector {
             }
         }
 
+
         if(parentesis != 0){
             System.out.println("Hace falta un parentesis para completar la expresion.");
             return null;
@@ -123,4 +131,3 @@ public class Lector {
 
     }
 }
-
