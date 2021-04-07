@@ -1,1 +1,0 @@
-(defun factorial ( x ) ( cond ( = x 1 ) 1 ( cond ( > x 0 ) ( * x ( factorial ( - x 1 ) ) ) ( format t "Ingrese numero mayor a 0" ) ) ) )
