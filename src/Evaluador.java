@@ -157,7 +157,4 @@ public class Evaluador<E> {
 			}
 			return null;
 		}
-
 }
-
-
