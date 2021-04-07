@@ -9,8 +9,6 @@ import java.util.*;
  */
 public class EvalFuncion<E> {
 
-
-
     HashMap<Object, ArrayList> newfunct = new HashMap<>();
     ArrayList<Object> inst = new ArrayList<Object>();
 
@@ -127,15 +125,11 @@ public class EvalFuncion<E> {
                 }else if(instruccion.contains("ATOM") || instruccion.contains("atom")){
                     String atom = new Evaluador<E>().atom(instruccion) ? "True": "False";
                     System.out.println(atom);
-
                 }
             }
-
         }
-
     }
-
-
+    
     public ArrayList getValue(Object function){
         /**
          * Getter que regresa el value del key aportado del hashmap
