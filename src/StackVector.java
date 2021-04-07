@@ -53,6 +53,4 @@ public class StackVector<T> implements Stack<T>{
             vec += this.vector.get(i)+"";
         return vec;
     }
-
-
 }
