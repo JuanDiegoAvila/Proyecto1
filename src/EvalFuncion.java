@@ -15,18 +15,16 @@ public class EvalFuncion<E> {
     ArrayList<Object> inst = new ArrayList<Object>();
 
     public String Calcular(ArrayList<E> datos){
-        //System.out.println(datos);
         Calculadora calc = new Calculadora();
         StringBuilder exp = new StringBuilder();
         for (Object temporal : datos) {
             if (temporal instanceof List) {
-                exp.append(Calcular((ArrayList<E>) temporal)+",");
+
+                exp.append(Calcular((ArrayList<E>) temporal));
             } else {
                 exp.append((String) temporal+",");
             }
         }
-        System.out.println(exp.toString());
-        System.out.println(calc.Calculo(exp));
         return calc.Calculo(exp);
     }
 
@@ -44,7 +42,7 @@ public class EvalFuncion<E> {
                  */
                 if (instruccion.contains("-") || instruccion.contains("/") || instruccion.contains("*") || instruccion.contains("+")){
 
-                    System.out.println("Resultado = "+ Calcular(instruccion));
+                    System.out.println("Resultado = "+ Calcular(ins));
                     /**
                      * si encuentra la palabra list, crea una lista con los valores proporcionados
                      */
@@ -97,7 +95,7 @@ public class EvalFuncion<E> {
                         break;
                     }
                     /**
-                     * si encuentra cond, manda a ejecutar la funcion del evaluador
+                     * si encuentra cond, manda a ejecutar la funcion del evaluador 
                      */
                 }else if (instruccion.contains("cond")){
                     new Evaluador<E>().cond(instruccion);
@@ -108,7 +106,7 @@ public class EvalFuncion<E> {
                 else if(instruccion.contains("quote") || instruccion.contains("'")) {
                     new Evaluador<E>().quote(instruccion);
                     /**
-                     * Si encuentra setq regresa la variable y el valor de la eexpresion
+                     * Si encuentra setq regresa la variable y el valor de la eexpresion 
                      */
                 }else if(instruccion.contains("setq")) {
                     new Evaluador<E>().setq(instruccion);
