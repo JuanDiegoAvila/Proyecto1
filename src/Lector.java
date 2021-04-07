@@ -6,7 +6,6 @@ import java.util.*;
  * @author Jun Woo Lee Hong 
  */
 public class Lector {
-
     HashMap<String,String> var = new HashMap<String,String>();
     int parentesis;
 
