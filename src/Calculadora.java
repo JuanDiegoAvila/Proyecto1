@@ -49,7 +49,6 @@ public class Calculadora {
 
     public String Calculo(StringBuilder datos) {
         //Se crea Stack
-        System.out.println("Ingresa a calculadora "+datos.toString());
         String expresion = preToPost(datos.toString());
         Stack<Double> stack = new StackVector<Double>();
         List<String> lista = Arrays.asList(expresion.split("  "));
