@@ -30,7 +30,6 @@ public interface Stack<T> {
      * Metodo que regresa el valor del primer elemento del Stack.
      * **/
     public T Peek();
-
     public T get(int i);
     public void removeLast();
 }
