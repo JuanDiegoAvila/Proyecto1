@@ -6,6 +6,10 @@ import java.util.*;
  * @author Esteban Aldana Guerra 20591
  * @author Juan Diego Avila Sagastume
  * @author Jun Woo Lee Hong 
+ * Referencias para evaluador y EvalFuncion
+ * https://www.cs.us.es/~jalonso/publicaciones/1991-Lisp-manual.pdf
+ * https://www.tutorialspoint.com/java/lang/double_parsedouble.htm
+ * https://www.tutorialspoint.com/java/number_equals.htm
  */
 public class EvalFuncion<E> {
 
