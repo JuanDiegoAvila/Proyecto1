@@ -29,21 +29,24 @@ public class EvalFuncion<E> {
         return calc.Calculo(exp);
     }
 
-    public void fEvaluar(ArrayList<E> ins){
+    public String fEvaluar(ArrayList<E> ins){
         List<E> list;
+        String respuesta = "";
         /**
          * Se recorre la instruccion para ser evaluada
          */
         for(Object i : ins){
 
             if(i instanceof List){
+                respuesta += fEvaluar((ArrayList<E>) i);
+            }else{
                 ArrayList<E> instruccion = (ArrayList<E>) i;
                 /**
                  * si encuentra signos manda a calcular la expresion
                  */
                 if (instruccion.contains("-") || instruccion.contains("/") || instruccion.contains("*") || instruccion.contains("+")){
 
-                    System.out.println("Resultado = "+ Calcular(ins));
+                    System.out.println("Resultado = "+ Calcular(instruccion));
                     /**
                      * si encuentra la palabra list, crea una lista con los valores proporcionados
                      */
@@ -96,7 +99,7 @@ public class EvalFuncion<E> {
                         break;
                     }
                     /**
-                     * si encuentra cond, manda a ejecutar la funcion del evaluador 
+                     * si encuentra cond, manda a ejecutar la funcion del evaluador
                      */
                 }else if (instruccion.contains("cond")){
                     new Evaluador<E>().cond(instruccion);
@@ -107,7 +110,7 @@ public class EvalFuncion<E> {
                 else if(instruccion.contains("quote") || instruccion.contains("'")) {
                     new Evaluador<E>().quote(instruccion);
                     /**
-                     * Si encuentra setq regresa la variable y el valor de la eexpresion 
+                     * Si encuentra setq regresa la variable y el valor de la eexpresion
                      */
                 }else if(instruccion.contains("setq")) {
                     new Evaluador<E>().setq(instruccion);
@@ -133,7 +136,7 @@ public class EvalFuncion<E> {
             }
 
         }
-
+        return respuesta;
     }
 
 

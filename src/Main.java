@@ -32,11 +32,12 @@ public class Main {
                     sc.nextLine();
 
                     if (op == 1) {
-                        String path = "";
-                        System.out.print("Ingrese la direccion del archivo a evaluar: ");
-                        path = sc.nextLine();
-
-                        ArrayList<Object> expresion = lector.LISP(path);
+                        //String path = "";
+                        System.out.print("Ingrese el codigo de LISP: ");
+                        String ex = sc.nextLine();
+                        Scanner nuevo = new Scanner(ex);
+                        ArrayList<Object> expresion = lector.LISP(nuevo);
+                        System.out.println(expresion.toString());
                         evaluar.fEvaluar(expresion);
 
                     } else if (op == 2) {
@@ -44,8 +45,9 @@ public class Main {
                         System.out.println("La funcion debe ser ingresada de esta manera : ( nombre x )");
                         String userFunction = sc.nextLine(); //La funcion se debe ingresar sin parentesis
 
+                        Scanner nuevo = new Scanner(userFunction);
                         //Toma lo que el usuario ingreso y lo convierte en un ArrayList
-                        ArrayList<Object> functionExpresion = lector.Read(userFunction);
+                        ArrayList<Object> functionExpresion = lector.LISP(nuevo);
                         ArrayList<Object> temporal = (ArrayList<Object>) functionExpresion.get(0);
 
 
