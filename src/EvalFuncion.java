@@ -20,26 +20,24 @@ public class EvalFuncion<E> {
         StringBuilder exp = new StringBuilder();
         for (Object temporal : datos) {
             if (temporal instanceof List) {
-
-                exp.append(Calcular((ArrayList<E>) temporal));
+                exp.append(Calcular((ArrayList<E>) temporal)+",");
             } else {
                 exp.append((String) temporal+",");
             }
         }
+        System.out.println(exp.toString());
+        System.out.println(calc.Calculo(exp));
         return calc.Calculo(exp);
     }
 
-    public String fEvaluar(ArrayList<E> ins){
+    public void fEvaluar(ArrayList<E> ins){
         List<E> list;
-        String respuesta = "";
         /**
          * Se recorre la instruccion para ser evaluada
          */
         for(Object i : ins){
 
             if(i instanceof List){
-                respuesta += fEvaluar((ArrayList<E>) i);
-            }else{
                 ArrayList<E> instruccion = (ArrayList<E>) i;
                 /**
                  * si encuentra signos manda a calcular la expresion
@@ -136,7 +134,7 @@ public class EvalFuncion<E> {
             }
 
         }
-        return respuesta;
+
     }
 
 
