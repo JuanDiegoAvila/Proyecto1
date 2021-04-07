@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 import java.util.*;
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ public class Main {
         boolean salir = true;
         Scanner sc = new Scanner(System.in);
 
-        //Se llama a la clase Lector
+        //Se llama a la clase Lector y EvalFuncion
         Lector lector = new Lector();
         EvalFuncion<Object> evaluar = new EvalFuncion<Object>();
 
@@ -100,5 +99,3 @@ public class Main {
     }
 
 }
-
-
