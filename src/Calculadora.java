@@ -19,7 +19,6 @@ public class Calculadora {
     // Convert prefix to Postfix expression
     public String preToPost(String expresion)
     {
-
         Stack<String> stack = new StackVector<String>();
         List<String> lista = Arrays.asList(expresion.split(","));
 
@@ -44,7 +43,6 @@ public class Calculadora {
         }
         // stack contains only the Postfix expression
         return stack.toString();
-
     }
 
     public String Calculo(StringBuilder datos) {
@@ -71,8 +69,5 @@ public class Calculadora {
         }
         return String.valueOf(stack.Pop());
     }
-
-
-
 
 }
